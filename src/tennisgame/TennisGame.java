@@ -1,21 +1,40 @@
-/*
- * To change this license header, choose License Headers in Project Properties.
- * To change this template file, choose Tools | Templates
- * and open the template in the editor.
- */
 package tennisgame;
 
-/**
- *
- * @author Kordian Drozd
- */
-public class TennisGame {
+import java.awt.BorderLayout;
+import java.awt.EventQueue;
+import java.io.IOException;
+import javax.swing.JFrame;
 
-    /**
-     * @param args the command line arguments
-     */
-    public static void main(String[] args) {
-        // TODO code application logic here
+public class TennisGame extends JFrame
+{
+    public static  int WIDTH_GAME_FRAME = 800;
+    public static  int HEIGHT_GAME_FRAME = 700;
+    
+    
+    public TennisGame() 
+    {
+       this.setTitle("Game");
+       this.setLayout(new BorderLayout());
+       this.setSize(WIDTH_GAME_FRAME, HEIGHT_GAME_FRAME);
+       this.setDefaultCloseOperation(JFrame.EXIT_ON_CLOSE);
+       this.setLocationRelativeTo(null);
+       
+
+       
+       this.setResizable(false);
+       this.setVisible(true);
+       
     }
     
+    public static void main(String[] args) {
+        
+        EventQueue.invokeLater(() -> {
+           
+              //  GameFrame ex = new GameFrame();
+            
+            
+            
+        });
+    }
 }
+
