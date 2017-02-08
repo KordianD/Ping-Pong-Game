@@ -9,7 +9,7 @@ public class MouseInput extends MouseAdapter{
     private final GamePanel gPanel;
     private final Game game;
     private final String helpInfo = "This is a very simple game which imitates"
-            + " world-known game Ping Pong \n\n " + "You use arrows and try"
+            + " world-known game Ping Pong \n\n " + "You use arrows and try "
             + "to win against computer!";
     
     public MouseInput(Game game, GamePanel gPanel){
