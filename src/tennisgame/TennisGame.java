@@ -2,16 +2,15 @@ package tennisgame;
 
 import java.awt.BorderLayout;
 import java.awt.EventQueue;
-import java.io.IOException;
 import javax.swing.JFrame;
 
 public class TennisGame extends JFrame
 {
-    public static  int WIDTH_GAME_FRAME = 800;
-    public static  int HEIGHT_GAME_FRAME = 700;
+    public final static  int WIDTH_GAME_FRAME = 800;
+    public final static  int HEIGHT_GAME_FRAME = 700;
     
     
-    public TennisGame() 
+    public TennisGame() throws Exception 
     {
        this.setTitle("Game");
        this.setLayout(new BorderLayout());
@@ -19,7 +18,8 @@ public class TennisGame extends JFrame
        this.setDefaultCloseOperation(JFrame.EXIT_ON_CLOSE);
        this.setLocationRelativeTo(null);
        
-
+       Game game = new Game();
+       this.add(game.getGamePanel());
        
        this.setResizable(false);
        this.setVisible(true);
@@ -29,12 +29,15 @@ public class TennisGame extends JFrame
     public static void main(String[] args) {
         
         EventQueue.invokeLater(() -> {
-           
-              TennisGame tg = new TennisGame();
-            
-            
-            
+            try{
+                TennisGame tg = new TennisGame();
+            }
+            catch(Exception e){
+                System.out.println("ERROR");
+            }
         });
+        
+        
     }
 }
 
