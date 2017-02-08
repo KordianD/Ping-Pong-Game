@@ -30,7 +30,7 @@ public class TennisGame extends JFrame
         
         EventQueue.invokeLater(() -> {
            
-              //  GameFrame ex = new GameFrame();
+              TennisGame tg = new TennisGame();
             
             
             
