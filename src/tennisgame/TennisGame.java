@@ -9,8 +9,7 @@ public class TennisGame extends JFrame
     public final static  int WIDTH_GAME_FRAME = 800;
     public final static  int HEIGHT_GAME_FRAME = 700;
     
-    
-    public TennisGame() throws Exception 
+     public TennisGame() throws Exception 
     {
        this.setTitle("Game");
        this.setLayout(new BorderLayout());

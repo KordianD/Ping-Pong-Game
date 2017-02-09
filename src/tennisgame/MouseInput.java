@@ -22,20 +22,22 @@ public class MouseInput extends MouseAdapter{
       int xMousePosition = e.getX();
       int yMousePosition = e.getY();
       
-      if (xMousePosition < gPanel.getXMenuImgPosition() || xMousePosition > 551)
+      if (Game.getStateOfGame() == Game.State.GAME)
           return;
       
       
+      if (xMousePosition < gPanel.getXMenuImgPosition() || xMousePosition > 551)
+          return;
+       
       if (yMousePosition > 280 && yMousePosition < 350)                       
-                 game.changeStateOfGame(Game.State.GAME);   
-                 
+                game.changeStateOfGame(Game.State.GAME);
+                            
       else if (yMousePosition > 400 && yMousePosition < 470)        
             JOptionPane.showMessageDialog(gPanel, helpInfo,
                     "Help information", JOptionPane.INFORMATION_MESSAGE);
                              
       else if (yMousePosition > 520 && yMousePosition < 590)
-              System.exit(0);        
-       
+              System.exit(0);             
     }
 }
 

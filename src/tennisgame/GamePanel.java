@@ -4,18 +4,25 @@ import java.awt.Graphics;
 import java.awt.image.BufferedImage;
 import java.io.IOException;
 import javax.imageio.ImageIO;
+import javax.swing.JOptionPane;
 import javax.swing.JPanel;
 
 
 public class GamePanel extends JPanel {
     
     private BufferedImage playImg, helpImg, exitImg, backgroundImg, titleImg;
-    private BufferedImage paddleImg;
+    private BufferedImage paddleImg, ballImg;
     private final int X_MENU_IMG_POSITION;
+    private String winnerInfo;
+    private Paddle player, pc;
+    private Ball ball;
     
-    public GamePanel() throws Exception{
+    public GamePanel(Paddle player, Paddle pc, Ball ball) throws Exception{
         this.X_MENU_IMG_POSITION = 251;
-          loadImages();
+        loadImages();
+        this.player = player;
+        this.pc = pc;
+        this.ball = ball;
     }
     
     public final void loadImages() throws IOException{
@@ -30,27 +37,54 @@ public class GamePanel extends JPanel {
         titleImg      = ImageIO.read(getClass().getResource
                                                       ("/images/title220.png"));
         paddleImg     = ImageIO.read(getClass().getResource
-                                                      ("/images/yellow.png"));           
+                                                      ("/images/yellow.png")); 
+        ballImg       = ImageIO.read(getClass().getResource
+                                                    ("/images/football18.png"));
     }
     
     public int getXMenuImgPosition(){
         return X_MENU_IMG_POSITION;
     }
     
+     public void endOfGame(boolean win)   {
+        if (win)  {
+            winnerInfo = "You win!";
+            JOptionPane.showMessageDialog(this, winnerInfo,
+                    "End of game", JOptionPane.INFORMATION_MESSAGE);
+        }
+        
+        else{
+            winnerInfo = "You lost";
+            JOptionPane.showMessageDialog(this, winnerInfo,
+                    "End of game", JOptionPane.INFORMATION_MESSAGE);
+        }       
+    }  
+    
     @Override
-    protected void paintComponent(Graphics g) 
-    {
+    protected void paintComponent(Graphics g)   {
        super.paintComponent(g);
        g.drawImage(backgroundImg, 0, 0, null);        
        
-       paintMenu(g);              
+      if (Game.getStateOfGame() == Game.State.MENU)
+          paintMenu(g);
+      else
+       paintGame(g);
+       
     }
       
-    private void paintMenu(Graphics g){
-       
+    private void paintMenu(Graphics g){     
        g.drawImage(titleImg, 280, 25, null);
        g.drawImage(playImg, X_MENU_IMG_POSITION, 280, null);
        g.drawImage(helpImg, X_MENU_IMG_POSITION, 400, null);
        g.drawImage(exitImg, X_MENU_IMG_POSITION, 520, null);
+    }
+
+    private void paintGame(Graphics g) {
+       g.drawImage(ballImg, ball.getRectangle().x, ball.getRectangle().y, null);
+        
+       g.drawImage(paddleImg, player.getRectangle().x,
+                                                 player.getRectangle().y, null);
+       g.drawImage(paddleImg, pc.getRectangle().x,
+                                                  pc.getRectangle().y, null);
     }
 }
