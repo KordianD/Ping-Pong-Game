@@ -14,8 +14,8 @@ public class GamePanel extends JPanel {
     private BufferedImage paddleImg, ballImg;
     private final int X_MENU_IMG_POSITION;
     private String winnerInfo;
-    private Paddle player, pc;
-    private Ball ball;
+    private final Paddle player, pc;
+    private final Ball ball;
     
     public GamePanel(Paddle player, Paddle pc, Ball ball) throws Exception{
         this.X_MENU_IMG_POSITION = 251;

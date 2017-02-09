@@ -5,9 +5,9 @@ import java.awt.Rectangle;
 public class Ball {
     private int xPosition;
     private int yPosition;
-    private int xMovement = 2;
-    private int yMovement = 2;
-    private final int WIDTH = 15, HEIGHT = 15;
+    private int xMovement = 3;
+    private int yMovement = 3;
+    private final int WIDTH = 25, HEIGHT = 20;
     
     
     public Ball(){

@@ -9,19 +9,19 @@ import javax.swing.JComponent;
 import javax.swing.KeyStroke;
 import java.util.EnumMap;
 
-public final class KeyInput implements Runnable
-{
+public final class KeyInput implements Runnable{
 
     private static final String PRESSED = "pressed";    
     private static final String RELEASED = "released"; 
     private final EnumMap<Key, Boolean> keyMap; 
     private final GamePanel gPanel;
-    private final Paddle paddle;
+    private final Paddle player, pc;
     
-    public KeyInput(GamePanel gPanel, Paddle paddle)  {
+    public KeyInput(GamePanel gPanel, Paddle player, Paddle pc)  {
       this.keyMap =  new EnumMap<>(Key.class);
       this.gPanel = gPanel;
-      this.paddle = paddle;
+      this.player = player;
+      this.pc = pc;
       
       resetKeyInput();
 
@@ -51,16 +51,16 @@ public final class KeyInput implements Runnable
           for (Key key : keyMap.keySet())
          {
             if (keyMap.get(key) && order == 1)      
-                paddle.move(Game.Direction.LEFT);
+                pc.move(Game.Direction.LEFT);
                   
             else if (keyMap.get(key) && order == 2)           
-                paddle.move(Game.Direction.RIGHT);
+                pc.move(Game.Direction.RIGHT);
          
             else if (keyMap.get(key) && order == 3)            
-                paddle.move(Game.Direction.LEFT);
+                player.move(Game.Direction.LEFT);
            
             else if (keyMap.get(key) && order == 4)           
-                paddle.move(Game.Direction.RIGHT);
+                player.move(Game.Direction.RIGHT);
                     
             order++;
          }     

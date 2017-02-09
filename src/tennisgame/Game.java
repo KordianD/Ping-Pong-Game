@@ -26,24 +26,25 @@ public class Game implements Runnable {
        mouseInput = new MouseInput(this, gPanel);
        gPanel.addMouseListener(mouseInput);
        box = new Box(TennisGame.WIDTH_GAME_FRAME, TennisGame.HEIGHT_GAME_FRAME);
-       keyInput = new KeyInput(gPanel, player);
+       keyInput = new KeyInput(gPanel, player, pc);
+       player.setTurn(true);
             
        ScheduledThreadPoolExecutor executor, keyExecutor;
        keyExecutor = new ScheduledThreadPoolExecutor(10);
      
        keyExecutor.scheduleAtFixedRate
-       (keyInput, 0L, 13L, TimeUnit.MILLISECONDS);   
-
+       (keyInput, 0L, 15L, TimeUnit.MILLISECONDS);   
 
        executor = new ScheduledThreadPoolExecutor(10);
        keyExecutor = new ScheduledThreadPoolExecutor(10);
+       
        executor.scheduleAtFixedRate
        (this, 0L, 15L, TimeUnit.MILLISECONDS);
-     keyExecutor.scheduleAtFixedRate
+     
+       keyExecutor.scheduleAtFixedRate
        (keyInput, 0L, 15L, TimeUnit.MILLISECONDS);       
     }
 
- 
     @Override
     public void run() {      
        if (stateOfGame == State.GAME){
@@ -58,10 +59,16 @@ public class Game implements Runnable {
     }
     
     public void checkCollisions(){
-        if (ball.getRectangle().intersects(player.getRectangle()))
+        if (ball.getRectangle().intersects(player.getRectangle()) && player.isTurn()){
             ball.bouncePaddle();
-        else if (ball.getRectangle().intersects(pc.getRectangle()))
+            player.setTurn(false);
+            pc.setTurn(true);
+        }
+        else if (ball.getRectangle().intersects(pc.getRectangle()) && pc.isTurn()){           
             ball.bouncePaddle();
+            pc.setTurn(false);
+            player.setTurn(true);            
+       }
         else if (ball.getRectangle().intersects(box.getLeftWall()) ||
                 ball.getRectangle().intersects(box.getRightWall()))
             ball.bounceWall();
