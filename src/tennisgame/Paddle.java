@@ -3,11 +3,12 @@ package tennisgame;
 import java.awt.Rectangle;
 
 public class Paddle {
+
     private int xPaddlePosition;
     private int yPaddlePosition;
     private final int startingXPosition, startingYPosition; 
-    private final int WIDTH = 120, HEIGHT = 18;
-    private final int PADDLE_MOVE = 5;
+    private static final int WIDTH = 120, HEIGHT = 18;
+    private static final int PADDLE_MOVE = 5;
     private boolean myTurnBounce;
 
     public Paddle(int xPaddlePosition, int yPaddlePosition){
@@ -17,7 +18,7 @@ public class Paddle {
     }
     
     public Rectangle getRectangle(){
-        return new Rectangle(xPaddlePosition,  yPaddlePosition, WIDTH, 18);
+        return new Rectangle(xPaddlePosition,  yPaddlePosition, WIDTH, HEIGHT);
     }
     
     public void move(Game.Direction dir){
@@ -43,4 +44,12 @@ public class Paddle {
     public boolean isTurn(){
         return myTurnBounce;
     }  
+    
+    public static int getPaddleMove(){
+        return PADDLE_MOVE;
+    }
+    
+    public static int getPaddleWidth(){
+        return WIDTH;
+    }
 }

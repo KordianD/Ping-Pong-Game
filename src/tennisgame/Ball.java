@@ -8,13 +8,11 @@ public class Ball {
     private int xMovement = 3;
     private int yMovement = 3;
     private final int WIDTH = 25, HEIGHT = 20;
-    
-    
+       
     public Ball(){
          xPosition =  (int) (Math.random() * 200 + 33) * 3;
          yPosition =  (int) (Math.random() * 33 + 100) * 3;
-    }
-    
+    }    
     
     public void move(){
         xPosition += xMovement;

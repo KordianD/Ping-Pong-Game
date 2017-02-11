@@ -48,13 +48,13 @@ public class GamePanel extends JPanel {
     
      public void endOfGame(boolean win)   {
         if (win)  {
-            winnerInfo = "You win!";
+            winnerInfo = "First player win!";
             JOptionPane.showMessageDialog(this, winnerInfo,
                     "End of game", JOptionPane.INFORMATION_MESSAGE);
         }
         
         else{
-            winnerInfo = "You lost";
+            winnerInfo = "Second player win!";
             JOptionPane.showMessageDialog(this, winnerInfo,
                     "End of game", JOptionPane.INFORMATION_MESSAGE);
         }       
@@ -68,8 +68,7 @@ public class GamePanel extends JPanel {
       if (Game.getStateOfGame() == Game.State.MENU)
           paintMenu(g);
       else
-       paintGame(g);
-       
+       paintGame(g);      
     }
       
     private void paintMenu(Graphics g){     

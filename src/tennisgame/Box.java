@@ -2,7 +2,6 @@ package tennisgame;
 
 import java.awt.Rectangle;
 
-
 public class Box {
     private final int WIDTH_FRAME, HEIGHT_FRAME;
     private final int MARGIN = 10; 

@@ -4,13 +4,12 @@ import java.awt.event.MouseAdapter;
 import java.awt.event.MouseEvent;
 import javax.swing.JOptionPane;
 
-
 public class MouseInput extends MouseAdapter{
     private final GamePanel gPanel;
     private final Game game;
     private final String helpInfo = "This is a very simple game which imitates"
-            + " world-known game Ping Pong \n\n " + "You use arrows and try "
-            + "to win against computer!";
+            + " world-known game Ping Pong \n\n " + "First player use arrows"
+            + ", second player use A and D keys";
     
     public MouseInput(Game game, GamePanel gPanel){
         this.game = game;
@@ -24,8 +23,7 @@ public class MouseInput extends MouseAdapter{
       
       if (Game.getStateOfGame() == Game.State.GAME)
           return;
-      
-      
+          
       if (xMousePosition < gPanel.getXMenuImgPosition() || xMousePosition > 551)
           return;
        

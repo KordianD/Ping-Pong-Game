@@ -29,8 +29,7 @@ public final class KeyInput implements Runnable{
       int condition = JComponent.WHEN_IN_FOCUSED_WINDOW;
       InputMap inputMap = gPanel.getInputMap(condition);
 
-      for (Key key : Key.values()) 
-      {
+      for (Key key : Key.values())      {
          KeyStroke pressedKeyStroke = KeyStroke.getKeyStroke
                                      (key.getKeyCode(), 0, false);
          KeyStroke releasedKeyStroke = KeyStroke.getKeyStroke
@@ -44,8 +43,7 @@ public final class KeyInput implements Runnable{
     }
 
     @Override
-    public void run()
-    {         
+    public void run()    {         
         int order = 1;
        
           for (Key key : keyMap.keySet())
